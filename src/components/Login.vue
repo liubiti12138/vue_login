@@ -1,43 +1,42 @@
 <template>
   <div class="header">
-    <Form></Form>
-    <Wave></Wave>
-    
+    <FormComponent></FormComponent>
+    <WaveComponent></WaveComponent>
+
     <router-link to="/Login">Login</router-link>
-    <router-view></router-view> 
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import Form from './form.vue';
-import Wave from './wave.vue';
+import FormComponent from './Form';
+import WaveComponent from './Wave';
 
 export default {
-    name: "loginComponent",
-    data() {
-        return {};
+  name: "loginComponent",
+  data() {
+    return {};
+  },
+  props: {
+    msg: String,
+  },
+  methods: {
+    header() {
+      // const{ }=this
+      // this.$route,push({
+      //     name:"Main",
+      //     params:{
+      //         username:this.name
+      //     }
+      // })
+      // console.log(Wave);
+      // console.log(Form);
     },
-    props: {
-        msg: String,
-    },
-    methods: {
-        header() {
-            // const{ }=this
-            // this.$route,push({
-            //     name:"Main",
-            //     params:{
-            //         username:this.name
-            //     }
-            // })
-            // console.log(Wave);
-            // console.log(Form);
-        },
-      
-    },
-    components: {
-    Form,
-    Wave
-}
+  },
+  components: {
+    WaveComponent,
+    FormComponent,
+  },
 };
 </script>
 
@@ -48,8 +47,8 @@ export default {
   box-sizing: border-box;
 }
 
-
-html,body {
+html,
+body {
   line-height: 1.6;
   width: 100%;
   height: 100%;
@@ -73,16 +72,16 @@ html,body {
 } */
 
 /* .container { */
-  /* margin: auto; */
-  /* width: 500px; */
-  /* overflow: auto; */
-  /* padding: 3rem 2rem;
+/* margin: auto; */
+/* width: 500px; */
+/* overflow: auto; */
+/* padding: 3rem 2rem;
   display: flex;
   justify-content: center; */
-  /*水平方向*/
-  /* align-items: center; */
-  /*垂直方向*/
-  /* height: 85%;
+/*水平方向*/
+/* align-items: center; */
+/*垂直方向*/
+/* height: 85%;
   flex-direction: column;
 } */
 

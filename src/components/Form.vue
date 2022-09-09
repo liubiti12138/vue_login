@@ -1,39 +1,41 @@
 <template>
-    <div class="container">
-     <e-form>
-        <h2>欢迎登录</h2>
-        <el-input v-model="input1" placeholder="请输入账号" ></el-input>
-        <el-input placeholder="请输入密码" v-model="input2" show-password></el-input>
-        <el-button type="success" onclick="tiaozhuan" >登录</el-button>
+  <div class="container">
+    <e-form>
+      <h2>欢迎登录</h2>
+      <el-input v-model="input1" placeholder="请输入账号"></el-input>
+      <el-input
+        placeholder="请输入密码"
+        v-model="input2"
+        show-password
+      ></el-input>
+      <el-button type="success" onclick="tiaozhuan">登录</el-button>
     </e-form>
-    </div>
+  </div>
 </template>
 
 <script>
 export default {
-   data(){
-  
-   },
-   methods:{
+  name: "FormComponent",
+  data () {
+    return {
+      input1: ''
+    };
+  },
+  methods: {
     tiaozhuan() {
       // console.log("我跳转", this);
       //字符串形式直接跳转
       this.$router.push("/main");
-    
     },
-    shuru(){
-    // if(input1.value=""){
-    //   alert("不可登录，请填好信息");
-    // }else{
-    //   alert("登录成功！")
-    // }
-     if(input1="")
-      
-    }
-
-      }
-    }
-  
+    shuru() {
+      // if(input1.value=""){
+      //   alert("不可登录，请填好信息");
+      // }else{
+      //   alert("登录成功！")
+      // }
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -79,17 +81,16 @@ export default {
 } */
 
 /* .container { */
-  /* margin: auto; */
-  /* width: 500px; */
-  /* overflow: auto; */
-  /* padding: 3rem 2rem;
+/* margin: auto; */
+/* width: 500px; */
+/* overflow: auto; */
+/* padding: 3rem 2rem;
   display: flex;
   justify-content: center; */
-  /*水平方向*/
-  /* align-items: center; */
-  /*垂直方向*/
-  /* height: 85%;
+/*水平方向*/
+/* align-items: center; */
+/*垂直方向*/
+/* height: 85%;
   flex-direction: column;
 } */
-
 </style>
