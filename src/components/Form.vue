@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <e-form>
+    <el-form>
       <h2>欢迎登录</h2>
       <el-input v-model="input1" placeholder="请输入账号"></el-input>
       <el-input
@@ -9,7 +9,7 @@
         show-password
       ></el-input>
       <el-button type="success" onclick="tiaozhuan">登录</el-button>
-    </e-form>
+    </el-form>
   </div>
 </template>
 
@@ -18,7 +18,8 @@ export default {
   name: "FormComponent",
   data () {
     return {
-      input1: ''
+      input1: '',
+      input2: ''
     };
   },
   methods: {

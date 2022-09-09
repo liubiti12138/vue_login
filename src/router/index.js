@@ -5,7 +5,7 @@ import Main from '@/components/Main'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   routes: [
     //可以配置重定向
     { path: '', redirect: "/login" },
@@ -26,5 +26,7 @@ export default new Router({
       // }
     }
   ]
-})
+});
+
+export {router};
 
