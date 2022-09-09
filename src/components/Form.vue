@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <el-form>
+    <!-- <el-form>
       <h2>欢迎登录</h2>
       <el-input v-model="input1" placeholder="请输入账号"></el-input>
       <el-input
@@ -8,7 +8,36 @@
         v-model="input2"
         show-password
       ></el-input>
-      <el-button type="success" onclick="tiaozhuan">登录</el-button>
+      <el-button type="success" @click="submit">登录</el-button>
+    </el-form> -->
+    <el-form
+      :model="ruleForm"
+      status-icon
+      :rules="rules"
+      ref="ruleForm"
+      label-width="100px"
+      class="demo-ruleForm"
+    >
+      <el-form-item label="用户名" prop="userName">
+        <el-input
+          v-model.number="ruleForm.userName"
+          placeholder="请输入内容"
+        ></el-input>
+      </el-form-item>
+      <el-form-item label="密码" prop="pass">
+        <el-input
+          type="password"
+          v-model="ruleForm.pass"
+          autocomplete="off"
+          placeholder="请输入内容"
+        ></el-input>
+      </el-form-item>
+      <el-form-item>
+        <el-button type="primary" @click="submitForm('ruleForm')"
+          >提交</el-button
+        >
+        <el-button @click="resetForm('ruleForm')">重置</el-button>
+      </el-form-item>
     </el-form>
   </div>
 </template>
@@ -16,30 +45,79 @@
 <script>
 export default {
   name: "FormComponent",
-  data () {
+  data() {
+    var checkAge = (rule, value, callback) => {
+      if (!value) {
+        return callback(new Error("请输入用户名"));
+      }
+    };
+    var validatePass = (rule, value, callback) => {
+      if (value === "") {
+        callback(new Error("请输入密码"));
+      } else {
+        if (this.ruleForm.checkPass !== "") {
+          this.$refs.ruleForm.validateField("checkPass");
+        }
+        callback();
+      }
+    };
     return {
-      input1: '',
-      input2: ''
+      ruleForm: {
+        pass: "",
+        userName: "",
+      },
+      rules: {
+        pass: [{ validator: validatePass, trigger: "blur" }],
+        userName: [{ validator: checkAge, trigger: "blur" }],
+      },
     };
   },
   methods: {
-    tiaozhuan() {
+    submitForm(formName) {
+      console.log('🚀 ~ formName', formName);
+      this.$router.push('/main');
+      // return;
+      // this.$refs[formName].validate((valid) => {
+      //   if (valid) {
+      //     alert("submit!");
+      //   } else {
+      //     console.log("error submit!!");
+      //     return false;
+      //   }
+      // });
+    },
+    resetForm(formName) {
+      this.$refs[formName].resetFields();
+    },
+    submit() {
+      this.$message.error("恭喜你，这是一条成功消息");
       // console.log("我跳转", this);
       //字符串形式直接跳转
-      this.$router.push("/main");
+      // this.$router.push("/main");
     },
     shuru() {
-      // if(input1.value=""){
-      //   alert("不可登录，请填好信息");
-      // }else{
-      //   alert("登录成功！")
-      // }
+      if (this.input1 === "") {
+        alert("不可登录，请填好信息");
+      } else {
+        alert("登录成功！");
+      }
     },
   },
 };
 </script>
 
 <style scoped>
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 300px;
+}
+
+/deep/ .el-form {
+  width: 500px;
+}
 /* #form {
   background: linear-gradient(60deg, rgba(84, 58, 183, 1) 0%, rgba(0, 172, 193, 1) 100%);
   color: white;

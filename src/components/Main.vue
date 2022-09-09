@@ -26,6 +26,7 @@
         alt="a great view of the sea above the mountain"
       />
     </div>
+    <i class="el-icon-picture-outline-round"></i>
   </div>
 </template>
 
